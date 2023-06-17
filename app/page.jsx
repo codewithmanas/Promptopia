@@ -1,4 +1,4 @@
-import Feed from "@components/Feed"
+import Feed from "@components/Feed";
 
 
 const Home = () => {
@@ -17,4 +17,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
