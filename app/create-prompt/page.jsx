@@ -40,7 +40,7 @@ const CreatePrompt = () => {
     }
   };
 
-
+  
   return (
     <Form
       type='Create'
@@ -52,4 +52,4 @@ const CreatePrompt = () => {
   )
 }
 
-export default CreatePrompt
+export default CreatePrompt;
