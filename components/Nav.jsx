@@ -3,24 +3,42 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+// import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 
 const Nav = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
-  const [ providers, setProviders ] = useState(null);
+  // const [ providers, setProviders ] = useState(null);
 
   const [toggleDropdown, setToggleDropdown] = useState(false)
 
-  useEffect(() => {
-    const setUpProviders = async () => {
-      const response  = await getProviders();
-      setProviders(response);
-    }
+  // useEffect(() => {
+  //   const setUpProviders = async () => {
+  //     const response  = await getProviders();
+  //     setProviders(response);
+  //   }
 
-    setUpProviders();
-  }, [])
+  //   setUpProviders();
+  // }, [])
+
+  const session = {
+    user: {
+      image: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    }
+  }
+
+  const providers = [
+    {
+      id: "google",
+      name: "Google",
+    },
+    {
+      id: "facebook",
+      name: "Facebook",
+    },
+  ]
+
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center" >
@@ -45,7 +63,7 @@ const Nav = () => {
             </Link>
 
             <button type="button"
-                    onClick={signOut}
+                    // onClick={signOut}
                     className="outline_btn">
               Sign Out
             </button>
@@ -66,7 +84,7 @@ const Nav = () => {
               <button 
                 type="button"
                 key={provider.name}
-                onClick={() => signIn(provider.id)}
+                // onClick={() => signIn(provider.id)}
                 className="black_btn"
                 >
                 Sign In
@@ -108,7 +126,7 @@ const Nav = () => {
                     <button type="button"
                         onClick={() => {
                           setToggleDropdown(false);
-                          signOut();
+                          // signOut();
                         }}
                         className="mt-5 w-full black_btn"
                         >
@@ -124,7 +142,7 @@ const Nav = () => {
               <button 
                 type="button"
                 key={provider.name}
-                onClick={() => signIn(provider.id)}
+                // onClick={() => signIn(provider.id)}
                 className="black_btn"
                 >
                 Sign In

@@ -2,15 +2,23 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
 
   const [copied, setCopied] = useState("");
+
+  const session = {
+    user: {
+      id: "123",
+      name: "John Doe",
+      image: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    }
+  }
 
   const handleProfileClick = () => {
     console.log(post);
@@ -68,7 +76,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
       <p
         className="font-inter text-sm blue_gradient cursor-pointer"
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
+        // onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         #{post.tag}
       </p>
@@ -77,13 +85,13 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
-            onClick={handleEdit}
+            // onClick={handleEdit}
           >
             Edit
           </p>
           <p
             className="font-inter text-sm orange_gradient cursor-pointer"
-            onClick={handleDelete}
+            // onClick={handleDelete}
           >
             Delete
           </p>

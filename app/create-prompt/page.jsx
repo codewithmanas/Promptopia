@@ -1,20 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
 
 const CreatePrompt = () => {
   const router = useRouter();
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ 
-    prompt: "", 
-    tag: "" 
+  const [post, setPost] = useState({
+    creator: {
+      _id: "123",
+      username: "John Doe",
+      image: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    },
+    prompt: "An example prompt",
+    tag: "example tag",
   });
+
+  // const post = {
+  //   creator: {
+  //     _id: "123",
+  //     username: "John Doe",
+  //     image: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+  //   },
+  //   prompt: "An example prompt",
+  //   tag: "example tag",
+  // };
+
+  const session = {
+    user: {
+      id: "123",
+      name: "John Doe",
+      image: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    }
+  }
 
   const createPrompt = async (e) => {
     e.preventDefault();
