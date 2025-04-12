@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { DB_NAME } from "./constants";
 
 let isConnected = false; // track the connection
 
@@ -13,14 +14,15 @@ export const connectToDB = async () => {
 
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
-           dbName: "share_prompt",
+            dbName: DB_NAME,
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
 
         isConnected = true;
 
-        console.log("MongoDB connectd")
+        console.log("MongoDB connected")
+        
     } catch (error) {
         console.log(error);
     }
